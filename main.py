@@ -41,10 +41,27 @@
 
 
 #4
-s = input().lower()
+# s = input().lower()
 
-counts = dict()
-for i in s:
-    counts[i] = counts.get(i, 0) + 1
+# counts = dict()
+# for i in s:
+#     counts[i] = counts.get(i, 0) + 1
 
-print('\n'.join(f'{i[0]}: {i[1]}' for i in sorted(counts.items(), key=lambda x: x[1], reverse=True)[:3]))
+# print('\n'.join(f'{i[0]}: {i[1]}' for i in sorted(counts.items(), key=lambda x: x[1], reverse=True)[:3]))
+
+
+#5
+def simple(n):
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+n = int(input())
+l = []
+
+for i in range(2, n+1):
+    if simple(i):
+        l.append(i)
+
+print(l)
