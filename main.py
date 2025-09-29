@@ -54,7 +54,7 @@
 n = int(input())
 
 def sieve(n):
-    primes = [True] * (n+1) 
+    primes = [True for _ in range(n+1)]
     primes[0] = primes[1] = False
     
     for i in range(2, int(n**0.5) + 1):
