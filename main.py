@@ -51,17 +51,17 @@
 
 
 #5
-def simple(n):
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0:
-            return False
-    return True
-
 n = int(input())
-l = []
 
-for i in range(2, n+1):
-    if simple(i):
-        l.append(i)
+def sieve(n):
+    primes = [True] * (n+1) 
+    primes[0] = primes[1] = False
+    
+    for i in range(2, int(n**0.5) + 1):
+        if primes[i]:
+            for j in range(i*i, n+1, i):
+                primes[j] = False
+    
+    return [i for i, is_prime in enumerate(primes) if is_prime]
 
-print(l)
+print(sieve(n))
