@@ -29,6 +29,3 @@ def decode(word):
 
 print(f'encode: {encode(word_input)}')
 print(f'decode: {decode(encode(word_input))}')
-
-#test
-#test2
