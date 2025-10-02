@@ -11,5 +11,6 @@ def print_pack_report(count: int) -> None:
             print("расфасуем по 3")
         case _:
             print("не заказываем!")
-    
+
+
 print_pack_report(count)
