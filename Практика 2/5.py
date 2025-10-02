@@ -26,7 +26,7 @@ def int_to_roman(int_digit: int) -> str:
     result = []
 
     while int_digit != 0: # пока не добьем число до 0 будем вычитать близжайшие к нему числа (или добавлять)
-        closest_key = {roman_digit: abs(int_digit - roman_digit) for roman_digit in roman_map.values()} # создаем словарь где ключ - цифры, а значение - разница между курентным числом
+        closest_key = {roman_digit: abs(int_digit - roman_digit) for roman_digit in roman_map.values()} # создаем словарь где ключ - цифры (римские), а значение - модуль разницы между курентным числом и цифрой
         sorted_closest_key = sorted(list(closest_key.items()), key=lambda x: x[1]) # сортируем словарь по значениям (модулю разницы)
         closest_num = sorted_closest_key[0][0] # берем элемент с наименьшей разницей
 
