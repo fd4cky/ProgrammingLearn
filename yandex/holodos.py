@@ -7,17 +7,8 @@ def add(items: dict[str: list[dict]], title: str, amount: Decimal, expiration_da
     if expiration_date != None:
         expiration_date = datetime.datetime.strptime(expiration_date, r'%Y-%m-%d').date()
     
-    # Если товара с таким названием ещё нет — создаём пустой список партий
-    items[title] = items.get(title, [])
-
-    for index_item in range(len(items[title])):
-        if items[title][index_item]['expiration_date'] == expiration_date:
-           items[title][index_item]['amount'] += amount
-           break
-    else: # Если партии с этой датой нет — добавляем новую запись
-        items[title] = items.get(title, []) + [{'amount': amount, 'expiration_date': expiration_date}]
-    if len(items[title]) == 0:
-        items[title] += [{'amount': amount, 'expiration_date': expiration_date}]
+    # Если товара с таким названием ещё нет — создаём пустой список партий и добавялем новую партию
+    items[title] = items.get(title, []) + [{'amount': amount, 'expiration_date': expiration_date}]
 
 
 def add_by_note(items: dict, note: str):
