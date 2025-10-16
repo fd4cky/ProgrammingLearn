@@ -59,4 +59,4 @@ print(book.age)
 print(book2.age)
 print(book3.age)
 book.age = 25
-print(book)
+print(book3)
