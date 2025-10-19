@@ -14,7 +14,7 @@ class Manager(Employee):
 
     @property
     def salary(self):
-        return self.hours * 10 + self.clients_count * 4 
+        return self.hours * 10 + self.clients_count * 4 # к базовой ставке добавляем кол-во приведенных клиентов и умножаем на коэф.
 
 
 class Developer(Employee):
@@ -24,7 +24,7 @@ class Developer(Employee):
 
     @property
     def salary(self):
-        return self.hours * 10 + self.lines_of_code * 6
+        return self.hours * 10 + self.lines_of_code * 6 # к базовой ставке добавляем кол-во строк кода и умножаем на коэф.
     
 
 sanya = Developer(16, 400)
