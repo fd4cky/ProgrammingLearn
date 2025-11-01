@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Описание книги</title>
+    <style>
+body {
+    font-family: 'Inter', system-ui, -apple-system, Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #eef2ff, #f7f7f8);
+    color: #222;
+}
+
+nav {
+    padding: 14px 24px;
+    background: linear-gradient(90deg, #4f46e5, #6366f1);
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+    transform: scale(1.08);
+}
+
+.book-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 24px;
+    max-width: 700px;
+    margin: 40px auto;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 16px;
+}
+
+.book-cover {
+    display: block;
+    margin: 0 auto 20px;
+    width: 240px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+}
+
+.book-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #444;
+    text-align: justify;
+}
+    </style>
+</head>
+<body>
+    <nav>
+      <a href="/">Главная</a>
+      <a href="/book/">Книга</a>
+    </nav>
+    {% for post in posts %}
+    <div class="book-card">
+        <h1>{{ post.title }}</h1>
+        <img src="{{ post.url }}" alt="Обложка книги" class="book-cover">
+    </div>
+    <br>
+    {% endfor %}
+</body>
+</html>

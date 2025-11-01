@@ -1,5 +1,13 @@
-def func(a, b, c):
-    print(a, b, c)
+def fibonacci(n):
+    digits = [0, 1]
+    for i in range(2):
+        yield digits[i]
+    for i in range(2, n):
+        digits.append(digits[i-1] + digits[i-2])
+        yield digits[i]
 
-kwargs = {'a': 1, 'c': 2, 'b': 3}
-func(**kwargs)      # 1 2 3  ← распаковка словаря по ключам
+
+
+sequence = fibonacci(10)
+for number in sequence:
+    print(number)
