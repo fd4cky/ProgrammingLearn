@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Список собак</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f9fa;
+      padding-top: 60px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 80px auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #e9ecef;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    li:hover {
+      background: #dee2e6;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #4a90e2;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.75rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .nav-link {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+    .nav-link:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="{% url 'home' %}" class="nav-link">Главная</a>
+    <a href="{% url 'dogs_list' %}" class="nav-link">Список собак</a>
+  </nav>
+  <div class="container">
+    <h1>Список собак</h1>
+    <ul>
+        {% for item in items %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>
