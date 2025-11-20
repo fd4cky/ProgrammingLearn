@@ -1,7 +1,19 @@
+"""
+Django view functions for listing posts and showing book details.
+"""
 from django.shortcuts import render
 
 # Create your views here.
 def post_list(request):
+    """
+    Возвращает список книг с названием и обложкой.
+
+    Parameters:
+        request: HttpRequest — входящий HTTP‑запрос.
+
+    Returns:
+        HttpResponse — HTML‑страница со списком постов.
+    """
     context = [
         {
             'title': 'Мастер и маргарита',
@@ -15,7 +27,17 @@ def post_list(request):
 
     return render(request, 'posts/post_list.html', {'posts': context})
 
+
 def book_detail(request):
+    """
+    Возвращает подробную информацию о каждой книге.
+
+    Parameters:
+        request: HttpRequest — входящий HTTP‑запрос.
+
+    Returns:
+        HttpResponse — HTML‑страница с деталями книг.
+    """
     context = [
         {
             'title': 'Мастер и маргарита',
