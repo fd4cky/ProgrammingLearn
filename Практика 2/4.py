@@ -1,7 +1,3 @@
-"""
-Модуль для генерации случайных паролей с настройкой использования
-строчных и заглавных букв, цифр и специальных символов.
-"""
 from string import ascii_lowercase, ascii_uppercase, digits
 from random import choices
 

@@ -1,0 +1,95 @@
+{% extends 'vacancies/base.html' %}
+
+{% block title %}Загрузить вакансии - HH API{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Загрузить вакансии из HeadHunter API</h2>
+    <p style="color: #666; margin-bottom: 30px;">
+        Введите параметры поиска для получения вакансий из HH API. 
+        Данные будут сохранены в базу данных.
+    </p>
+    
+    <form method="post" action="{% url 'vacancies:fetch_vacancies' %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="search_text">Текст для поиска:</label>
+            <input type="text" id="search_text" name="search_text" 
+                   placeholder="Например: Python разработчик" 
+                   value="{{ request.POST.search_text }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="area">Регион:</label>
+            <select id="area" name="area">
+                {% for area in areas %}
+                <option value="{{ area.id }}" {% if area.id == 1 %}selected{% endif %}>
+                    {{ area.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="per_page">Количество вакансий (макс. 100):</label>
+            <input type="number" id="per_page" name="per_page" 
+                   min="1" max="100" value="50">
+        </div>
+        
+        <h3 style="margin-top: 30px; margin-bottom: 20px; color: #667eea;">Дополнительные фильтры (необязательно)</h3>
+        
+        <div class="form-group">
+            <label for="experience">Опыт работы:</label>
+            <select id="experience" name="experience">
+                <option value="">Не указано</option>
+                {% for exp in experiences %}
+                <option value="{{ exp.value }}">{{ exp.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="employment">Тип занятости:</label>
+            <select id="employment" name="employment">
+                <option value="">Не указано</option>
+                {% for emp in employments %}
+                <option value="{{ emp.value }}">{{ emp.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="schedule">График работы:</label>
+            <select id="schedule" name="schedule">
+                <option value="">Не указано</option>
+                {% for sch in schedules %}
+                <option value="{{ sch.value }}">{{ sch.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="salary">Минимальная зарплата (руб.):</label>
+            <input type="number" id="salary" name="salary" 
+                   min="0" placeholder="Не указано">
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <button type="submit" class="btn">Загрузить вакансии</button>
+            <a href="{% url 'vacancies:vacancy_list' %}" class="btn btn-secondary">Отмена</a>
+        </div>
+    </form>
+    
+    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h3 style="margin-bottom: 15px;">💡 Подсказки:</h3>
+        <ul style="line-height: 2; color: #666;">
+            <li>Поиск работает по названию вакансии, описанию и ключевым словам</li>
+            <li>Можно указать несколько параметров одновременно</li>
+            <li>Процесс загрузки может занять некоторое время</li>
+            <li>После загрузки вы будете перенаправлены в каталог вакансий</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

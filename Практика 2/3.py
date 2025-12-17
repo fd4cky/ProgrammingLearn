@@ -1,10 +1,3 @@
-"""
-Модуль для определения способа расфасовки в зависимости от количества товара.
-"""
-
-count = int(input())
-
-
 def print_pack_report(count: int) -> None:
     """
     Определяет способ расфасовки в зависимости от переданного количества.
@@ -25,5 +18,7 @@ def print_pack_report(count: int) -> None:
         case _:
             print("не заказываем!")
 
+
+count = int(input())
 
 print_pack_report(count)
